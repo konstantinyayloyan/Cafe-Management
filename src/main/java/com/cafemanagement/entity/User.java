@@ -1,6 +1,7 @@
 package com.cafemanagement.entity;
 
 
+import com.cafemanagement.enums.UserType;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -14,7 +15,12 @@ import javax.persistence.*;
                 @UniqueConstraint(name = "uk_user_email", columnNames = {"email"}),
         }
 )
+
+@Inheritance(strategy = InheritanceType.JOINED)
 public class User {
+
+    //discriminator_type
+
 
     //TODO: should have type field (enum) where we can define user type, fe. ADMIN, WAITER, etc.
     //TODO: in mentioned case user should be defined as abstract + mapped super type
@@ -26,6 +32,9 @@ public class User {
     @SequenceGenerator(name = "sequence_generator", sequenceName = "user_seq", allocationSize = 1)
     private Long id;
 
+
+
+    //<editor-fold desc="Description">
     @Column(name = "email", nullable = false)
     private String email;
 
@@ -35,6 +44,8 @@ public class User {
     @Column(name = "name", nullable = false)
     private String name;
 
+    @Column(name = "userType", nullable = false)
+    private UserType userType;
     //endregion
 
     //region Getters and setters
@@ -69,6 +80,14 @@ public class User {
 
     public void setName(final String name) {
         this.name = name;
+    }
+
+    public UserType getUserType() {
+        return userType;
+    }
+
+    public void setUserType(UserType userType) {
+        this.userType = userType;
     }
 
     //endregion

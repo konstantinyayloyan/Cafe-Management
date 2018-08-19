@@ -59,9 +59,9 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-                <groupId>io.springfox</groupId>
-                <artifactId>springfox-swagger-ui</artifactId>
-                <version>${swagger-ui.version}</version>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${swagger-ui.version}</version>
         </dependency>
         <dependency>
             <groupId>io.springfox</groupId>
