@@ -62,7 +62,7 @@ public class UserServiceFacade {
         return createEdit(user);
     }
 
-    public UserDTO createEdit(User user) {
+    private UserDTO createEdit(User user) {
         UserDTO userDTO = new UserDTO();
         User edittedUser = userService.edit(user);
 
